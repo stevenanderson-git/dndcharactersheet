@@ -14,11 +14,12 @@ public class SplitScrollPane extends JSplitPane {
         super();
         buildLeft();
         buildRight();
+        
     }
 
     private void buildLeft() {
         leftPane = new JScrollPane();
-        leftPane.add(new JTextArea());
+        leftPane.add(new JTextArea("Testing tacos"));
         setLeftComponent(leftPane);
     }
 
