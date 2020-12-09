@@ -30,6 +30,11 @@ public class MainGUI extends JFrame {
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         // Set the layout
         setLayout(new BorderLayout());
+        /**
+         * TODO: Change scrollpane to internal frames. Each internal frame should have
+         * its own 'sheet' that way data can be easily arranged to fit the screen
+         * https://docs.oracle.com/javase/tutorial/uiswing/components/internalframe.html
+         */
         // Left Scroll Pane
         leftScrollPane = new JScrollPane();
         leftScrollPane.add(new JTextArea("Walrus"));
@@ -38,14 +43,11 @@ public class MainGUI extends JFrame {
         // Right Scroll Pane
         rightScrollPane = new JScrollPane();
 
-
         // Create the split Pane
         splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, leftScrollPane, rightScrollPane);
         // add split pane to center border layout
         add(splitPane, BorderLayout.CENTER);
     }
-
-
 
     /**
      * Toggles the display visible/not depending on isVisible boolean
