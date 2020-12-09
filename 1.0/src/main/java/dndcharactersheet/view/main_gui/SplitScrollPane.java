@@ -1,41 +1,45 @@
 package dndcharactersheet.view.main_gui;
 
-import javax.swing.JButton;
+import java.awt.Component;
+
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
+import javax.swing.JTabbedPane;
 
-public class SplitScrollPane extends JSplitPane {
+public class SplitScrollPane extends JPanel {
+    private JSplitPane splitScrollPane;
     private JScrollPane leftPane;
     private JScrollPane rightPane;
+    private JTabbedPane leftTabbedPane;
+    private JTabbedPane rightTabbedPane;
 
     public SplitScrollPane() {
-        super();
-        buildLeft();
-        buildRight();
-        
+        splitScrollPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, getLeftScrollPane(), getRightScrollPane());
     }
 
-    private void buildLeft() {
-        leftPane = new JScrollPane();
-        leftPane.add(new JTextArea("Testing tacos"));
-        setLeftComponent(leftPane);
+    public Component getSplitScrollPane() {
+        return splitScrollPane;
     }
 
-    private void buildRight() {
-        rightPane = new JScrollPane();
-        rightPane.add(new JButton("Button 3"));
-        rightPane.add(new JTextField("Hello World"));
-        setRightComponent(rightPane);
+    private JScrollPane getLeftScrollPane() {
+        leftTabbedPane = new JTabbedPane(JTabbedPane.LEFT);
+        leftPane = new JScrollPane(leftTabbedPane);
+        return leftPane;
     }
 
-    public void addToLeftPane() {
-        // TODO
+    private JScrollPane getRightScrollPane() {
+        rightTabbedPane = new JTabbedPane(JTabbedPane.TOP);
+        rightPane = new JScrollPane(rightTabbedPane);
+        return rightPane;
     }
 
-    public void addToRightPane() {
-        // TODO
+    public void addToLeftPane(Component component) {
+        leftTabbedPane.add(component);
+    }
+
+    public void addToRightPane(Component component) {
+        rightTabbedPane.add(component);
     }
 
 }
